@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/BATCH_BUILD/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/BATCH_BUILD/operation=append
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/BATCH_BUILD/value=1
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/IDF_PATH/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/IDF_PATH/operation=append
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/IDF_PATH/value=C\:\\Workspace\\Boards\\esp32\\msys32\\home\\Bruno\\esp-idf
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/PATH/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/PATH/operation=replace
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/PATH/value=C\:\\Workspace\\Boards\\esp32\\msys32\\usr\\bin;C\:\\Workspace\\Boards\\esp32\\msys32\\opt\\xtensa-esp32-elf\\bin;C\:\\Workspace\\Boards\\esp32\\msys32\\mingw32\\bin
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/append=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.toolchain.base.270943487/appendContributed=true

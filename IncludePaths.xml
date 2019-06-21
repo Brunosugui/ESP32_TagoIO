@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdtprojectproperties>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+<includepath>${IDF_PATH}/components/esp32/include</includepath>
+<includepath>${IDF_PATH}/components/freertos/include</includepath>
+<includepath>${IDF_PATH}/components/log/include</includepath>
+<includepath>${IDF_PATH}/components/nvs_flash/include</includepath>
+<includepath>${IDF_PATH}/components/driver/include</includepath>
+<includepath>${IDF_PATH}/components/spi_flash/include</includepath>
+<includepath>${IDF_PATH}/components/esp32</includepath>
+<includepath>${IDF_PATH}/components/bt/include</includepath>
+<includepath>${IDF_PATH}/components/bt/bluedroid/device/include</includepath>
+<includepath>${IDF_PATH}/components/bt/bluedroid/stack/include</includepath>
+<includepath>${IDF_PATH}/components/bt/bluedroid/bta/include</includepath>
+<includepath>${IDF_PATH}/components/bt/bluedroid/api/include</includepath>
+<includepath>${IDF_PATH}/components/micro-ecc/micro-ecc</includepath>
+<includepath>${IDF_PATH}/components/bt/bluedroid/api/include/api</includepath>
+<includepath>${IDF_PATH}/components/soc/esp32/include</includepath>
+<includepath>${IDF_PATH}/components/lwip/lwip/src/include/lwip</includepath>
+<includepath>${IDF_PATH}/components/esp_common/include</includepath>
+<includepath>${IDF_PATH}/components/esp_event/include</includepath>
+<includepath>${IDF_PATH}/components/tcpip_adapter/include</includepath>
+<includepath>${IDF_PATH}/examples/common_components/protocol_examples_common/include</includepath>
+<includepath>${IDF_PATH}/components/esp_http_client/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/tasks/tasks_start/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/tasks/tago/include</includepath>
+
+</language>
+<language name="C++ Source File">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+<section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.Macros">
+<language name="Assembly Source File">
+
+</language>
+<language name="C Source File">
+
+</language>
+<language name="C++ Source File">
+
+</language>
+<language name="Object File">
+
+</language>
+</section>
+</cdtprojectproperties>
