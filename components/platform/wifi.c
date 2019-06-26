@@ -16,8 +16,8 @@
 
 static const char *WIFI_TAG = "WIFI AP";
 
-static char* ssid = "MY_SSID";
-static char* passwd = "MY_PASSWD";
+static uint8_t ssid[] = CONFIG_ESP_WIFI_SSID;
+static uint8_t passwd[] = CONFIG_ESP_WIFI_PASSWORD;
 
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
                                     int32_t event_id, void* event_data)
@@ -45,14 +45,16 @@ void wifi_init()
 
 	wifi_config_t wifi_config = {
 		.ap = {
-			.ssid = (uint8_t*) ssid,
-			.ssid_len = strlen(ssid),
-			.password = (uint8_t*) passwd,
+			//.ssid =  &ssid[0],
+			.ssid_len = strlen((char*)ssid),
+			//.password = &passwd[0],
 			.max_connection = MAX_STA_CONN,
-			.authmode = WIFI_AUTH_WPA_WPA2_PSK
+			//.authmode = WIFI_AUTH_WPA_WPA2_PSK
 		},
 	};
-	if (strlen(passwd) == 0) {
+	strcpy((char*) wifi_config.ap.ssid, (char*) ssid);
+	strcpy((char*) wifi_config.ap.password, (char*) passwd);
+	if (strlen((char*)passwd) == 0) {
 		wifi_config.ap.authmode = WIFI_AUTH_OPEN;
 	}
 

@@ -76,6 +76,7 @@ void http_rest_with_url(esp_http_client_method_t method, char* url, char* data)
 		esp_http_client_set_url(client, METHOD(POST, url));
 		esp_http_client_set_method(client, HTTP_METHOD_POST);
 		esp_http_client_set_post_field(client, post_data, strlen(post_data));
+		esp_http_client_set_header(client, "Content-type", "application/json"); //todo passar como parametro o header
 		err = esp_http_client_perform(client);
 		if (err == ESP_OK) {
 			ESP_LOGI(HTTP_TAG, "HTTP POST Status = %d, content_length = %d",

@@ -18,3 +18,10 @@ Modificações no projeto e datas
     - definir a conexão com a plataforma Tago;
     - implementar tasks de atualização de dados;
     - realizar ajustes dos includes;
+
+## [Bruno]  v1.1 - 26/06/2019
+- Adicionadas definições ao config do menuconfig;
+- Ajustes de includes realizados, projeto compilando, porém ainda não executado;
+- *To do list*:
+    - Testar conexão com a plataforma Tago;
+    - Fazer o post de alguns dados de teste;
