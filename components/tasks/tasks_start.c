@@ -12,7 +12,7 @@
 
 /***** incluir tasks includes *****/
 #include "tago_task.h"
-
+#include "events_task.h"
 /**********************************/
 
 #include "stddef.h"
@@ -47,26 +47,28 @@ typedef struct{
  *		obs.: ao adicionar uma task, deve-se adicionar um novo enum em @task_index_t e criar um novo @TaskHandle_t
  */
 
-TaskHandle_t tago_task_handler;
+TaskHandle_t tago_task_handler, events_task_handler;
 
 typedef enum{
 	TAGO_TASK,
+	EVENTS_TASK,
 	TASKS_NUMBER
 }task_index_t;
 
 static const task_template_t task_table[] =
 {
 		{		tago_task, 			"tago_task", 		2048,		NULL,		10,		&tago_task_handler		},
+		{		events_task, 		"events_task", 		2048,		NULL,		10,		&events_task_handler	},
 												{NULL}
 };
 
 BaseType_t tasks_init()
 {
-	BaseType_t ret = 1;
+	BaseType_t ret = pdPASS;
 	uint8_t i = 0;
 	uint8_t tasks_number = 0;
 
-	for ( i = 0; i < TASKS_NUMBER; i++)
+	for ( i = 0; i < TASKS_NUMBER && ret == pdPASS; i++)
 	{
 		ret = TASK_CREATE(task_table, i);
 		if (ret == pdPASS)

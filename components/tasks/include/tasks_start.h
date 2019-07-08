@@ -15,6 +15,6 @@
 #include "freertos/queue.h"
 
 
-
+BaseType_t tasks_init();
 
 #endif /* COMPONENTS_TASKS_TASKS_START_INCLUDE_TASKS_START_H_ */

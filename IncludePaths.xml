@@ -24,10 +24,12 @@
 <includepath>${IDF_PATH}/components/esp_common/include</includepath>
 <includepath>${IDF_PATH}/components/esp_event/include</includepath>
 <includepath>${IDF_PATH}/components/tcpip_adapter/include</includepath>
-<includepath>${IDF_PATH}/examples/common_components/protocol_examples_common/include</includepath>
 <includepath>${IDF_PATH}/components/esp_http_client/include</includepath>
-<includepath workspace_path="true">/TagoIO/components/tasks/tasks_start/include</includepath>
-<includepath workspace_path="true">/TagoIO/components/tasks/tago/include</includepath>
+<includepath>${IDF_PATH}/components/esp_wifi/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/http_protocols/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/platform/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/utils/include</includepath>
+<includepath workspace_path="true">/TagoIO/components/tasks/include</includepath>
 
 </language>
 <language name="C++ Source File">

@@ -8,9 +8,12 @@
 */
 
 #include "board_init.h"
+#include "tasks_start.h"
+
 
 void app_main()
 {
 	board_init();
 
+	tasks_init();
 }

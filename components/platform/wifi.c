@@ -6,6 +6,7 @@
  */
 
 #include "wifi.h"
+#include "events.h"
 #include "esp_err.h"
 #include "esp_wifi.h"
 #include "tcpip_adapter.h"
@@ -14,7 +15,7 @@
 
 #define MAX_STA_CONN       10
 
-static const char *WIFI_TAG = "WIFI AP";
+static const char *WIFI_TAG = "::WIFI::";
 
 static uint8_t ssid[] = CONFIG_ESP_WIFI_SSID;
 static uint8_t passwd[] = CONFIG_ESP_WIFI_PASSWORD;
@@ -31,7 +32,32 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(WIFI_TAG, "station "MACSTR" leave, AID=%d",
                  MAC2STR(event->mac), event->aid);
     }
+    else if (WIFI_EVENT_STA_START == event_id)
+    {
+    	esp_wifi_connect();
+    	ESP_LOGI(WIFI_TAG, "Wifi Station Start event!\n");
+    }
+    else if (WIFI_EVENT_STA_CONNECTED == event_id)
+	{
+    	//todo iniciar envio de dados
+    	set_tago_transmit_event();
+    	wifi_event_sta_connected_t *event = (wifi_event_sta_connected_t*) event_data;
+    	ESP_LOGI(WIFI_TAG, "Station Connected to %s on channel %d\n", (char*) event->ssid, event->channel );
+	}
+    else if (WIFI_EVENT_STA_DISCONNECTED == event_id)
+	{
+    	//todo parar envio de dados
+    	set_tago_idle_event();
+    	wifi_event_sta_disconnected_t *event = (wifi_event_sta_disconnected_t*) event_data;
+    	ESP_LOGI(WIFI_TAG, "Station Disconnected event for reason %d!\n", event->reason);
+	}
+    else
+    {
+    	ESP_LOGI(WIFI_TAG, "Event occured id %d\n", event_id);
+    }
 }
+
+
 
 void wifi_init()
 {
@@ -44,22 +70,18 @@ void wifi_init()
 	ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
 
 	wifi_config_t wifi_config = {
-		.ap = {
-			//.ssid =  &ssid[0],
-			.ssid_len = strlen((char*)ssid),
-			//.password = &passwd[0],
-			.max_connection = MAX_STA_CONN,
-			//.authmode = WIFI_AUTH_WPA_WPA2_PSK
+		.sta = {
+			.scan_method = WIFI_FAST_SCAN
 		},
 	};
-	strcpy((char*) wifi_config.ap.ssid, (char*) ssid);
-	strcpy((char*) wifi_config.ap.password, (char*) passwd);
+	strcpy((char*) wifi_config.sta.ssid, (char*) ssid);
+	strcpy((char*) wifi_config.sta.password, (char*) passwd);
 	if (strlen((char*)passwd) == 0) {
 		wifi_config.ap.authmode = WIFI_AUTH_OPEN;
 	}
 
-	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_AP));
-	ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_config));
+	ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+	ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
 	ESP_ERROR_CHECK(esp_wifi_start());
 
 	ESP_LOGI(WIFI_TAG, "wifi_init_softap finished. SSID:%s password:%s",

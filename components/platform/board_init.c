@@ -9,6 +9,7 @@
 #include "nvs_flash.h"
 #include "esp_event.h"
 #include "wifi.h"
+#include "events.h"
 
 esp_err_t board_init()
 {
@@ -20,9 +21,10 @@ esp_err_t board_init()
 	  ret = nvs_flash_init();
 	}
 
+	events_init();
 	wifi_init();
 	ESP_ERROR_CHECK(ret);
-	ESP_ERROR_CHECK(esp_event_loop_create_default());
+	//ESP_ERROR_CHECK(esp_event_loop_create_default());
 
 	return err;
 }

@@ -25,3 +25,11 @@ Modificações no projeto e datas
 - *To do list*:
     - Testar conexão com a plataforma Tago;
     - Fazer o post de alguns dados de teste;
+
+## [Bruno]  v1.2 - 07/07/2019
+- Criada task de eventos;
+- Adicionado semaphore para sincronismo de recurso (estado da task Tago);
+- Adicionada thread para envio de dados
+- *To do list*:
+    - rotina de envio de dados para a plataforma Tago
+    - Reconexão do wifi caso a task tago esteja em IDLE state
