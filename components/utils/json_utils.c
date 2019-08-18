@@ -6,26 +6,14 @@
  */
 
 #include "json_utils.h"
+#include "stdio.h"
 
-//todo parse json to data
+#define TAGO_JSON_FORMAT				\
+		"{\"variable\" : \"%s\","		\
+		"\"value\" : \"%s\"}"
 
-//static inline void generate_simple_attrs(json_attr_t attr)
-//{
 
-//}
-/*
-void generate_json(json_obj_struct_t obj)
+void json_utils_get_tago_json(char* variable, char* value, char* buffer)
 {
-	if (1 < obj.attr_number)
-	{
-		if (!obj.is_json_key)
-		{
-
-		}
-		else
-		{
-
-		}
-	}
+	sprintf(&buffer[0], TAGO_JSON_FORMAT, variable, value);
 }
-*/

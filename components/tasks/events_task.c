@@ -34,13 +34,13 @@ void events_task()
 				pdFALSE,        // Don't wait for both bits, either bit will do.
 				xTicksToWait ); // Wait a maximum of 100ms for either bit to be set.
 
-	    if ((uxBits & TAGO_EVENT_TRANSMIT) != 0)
+	    if ((uxBits & EVENT_WF_CONNECTED) != 0)
 	    {
-	    	tago_set_state(TAGO_TRANSMIT);
+	    	tago_set_state(TAGO_WF_CONNECTED);
 	    }
-	    else if ((uxBits & TAGO_EVENT_DISCONNECT) != 0)
+	    else if ((uxBits & EVENT_WF_DISCONNECT) != 0)
 	    {
-	    	tago_set_state(TAGO_IDLE);
+	    	tago_set_state(TAGO_WF_DISCONNECTED);
 	    }
 	}
 }

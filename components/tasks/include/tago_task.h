@@ -10,7 +10,9 @@
 
 typedef enum{
 	TAGO_IDLE,
+	TAGO_WF_CONNECTED,
 	TAGO_TRANSMIT,
+	TAGO_WF_DISCONNECTED,
 	TAGO_STATES
 }tago_states_t;
 

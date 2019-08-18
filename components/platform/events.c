@@ -56,12 +56,13 @@ static inline esp_err_t set_event(uint32_t bits)
 	return uxBits == bits ? ESP_OK : ESP_FAIL;
 }
 
-esp_err_t set_tago_transmit_event()
+esp_err_t set_tago_wf_connected_event()
 {
-	return set_event(TAGO_EVENT_TRANSMIT);
+	return set_event(EVENT_WF_CONNECTED);
 }
 
-esp_err_t set_tago_idle_event()
+esp_err_t set_tago_wf_disconnected_event()
 {
-	return set_event(TAGO_EVENT_DISCONNECT);
+	return set_event(EVENT_WF_DISCONNECT);
 }
+

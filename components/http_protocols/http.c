@@ -3,6 +3,8 @@
  *
  *  Created on: Jun 20, 2019
  *      Author: Bruno
+ *
+ *      cópia do exemplo esp_http_client usado como referencia para escrever o http_tago.c
  */
 
 #include "http.h"
@@ -34,7 +36,7 @@ static esp_err_t _http_event_handler(esp_http_client_event_t *evt)
             ESP_LOGD(HTTP_TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
             if (!esp_http_client_is_chunked_response(evt->client)) {
                 // Write out data
-                // printf("%.*s", evt->data_len, (char*)evt->data);
+                 printf("%.*s", evt->data_len, (char*)evt->data);
             }
 
             break;
@@ -75,8 +77,10 @@ void http_rest_with_url(esp_http_client_method_t method, char* url, char* data)
     case HTTP_METHOD_POST:
 		esp_http_client_set_url(client, METHOD(POST, url));
 		esp_http_client_set_method(client, HTTP_METHOD_POST);
+		ESP_LOGI(HTTP_TAG, "Post data = %s", post_data);
 		esp_http_client_set_post_field(client, post_data, strlen(post_data));
-		esp_http_client_set_header(client, "Content-type", "application/json"); //todo passar como parametro o header
+		esp_http_client_set_header(client, "Content-type", "application/json");
+		esp_http_client_set_header(client, "Device-Token", CONFIG_ESP_DEVICE_TOKEN);
 		err = esp_http_client_perform(client);
 		if (err == ESP_OK) {
 			ESP_LOGI(HTTP_TAG, "HTTP POST Status = %d, content_length = %d",

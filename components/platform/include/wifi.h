@@ -10,6 +10,7 @@
 
 
 void wifi_init();
+void wifi_reconnect();
 
 
 #endif /* COMPONENTS_PLATFORM_WIFI_INCLUDE_WIFI_H_ */
